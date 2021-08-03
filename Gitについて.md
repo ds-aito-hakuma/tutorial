@@ -34,3 +34,22 @@ $ git remote add <name> <URL>
 
 ### git clone について
 - https://eng-entrance.com/git-clone
+---
+## 8月3日（火）
+### git cloneについて
+```git
+$ git clone <repository> <directory>
+```
+- クローンしたリポジトリではpushのパラメータのorigin mainは省略できる。
+
+### git pullについて
+``` git
+$ git pull <repository> <refspec>...
+$ git pull origin main
+```
+- リモートリポジトリの変更を、ローカルリポジトリ、ステージング、ワーキングツリーに反映させる。
+
+### 手動でマージする方法
+- 最後のpullを実行してから次のpushをするまでの間に、他の人がpushをしてリモートリポジトリを更新してしまっていた場合には自分のpushが拒否されてしまう。
+- この場合、マージという作業を行ってほかの履歴での変更を取り込むまで自分のpushは拒否される。
+  - pushが拒否されたとき、git pullを行い、変更箇所を修正することでpushすることが可能になる。
