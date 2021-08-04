@@ -3,7 +3,9 @@ FROM perl:5.26
 WORKDIR /app
 
 RUN cpanm Carton Amon2 \
-    && amon2-setup.pl HelloWorld || :
+    && amon2-setup.pl HelloWorld || : \
+    && apt-get update \
+    && apt-get -y install vim
 
 WORKDIR /app/HelloWorld
 
