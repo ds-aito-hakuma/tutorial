@@ -98,3 +98,9 @@ $ git branch <branchname>
 ```git
 $ git checkout <branch>
 ```
+
+---
+## 8月6日(金)
+### [fetchについて](https://backlog.com/ja/git-tutorial/stepup/15/)
+- 単にリモートリポジトリの内容を確認したいだけの時に使用する。
+- 実行すると、リモートリポジトリの最新の履歴の取得だけを行うことが出来る。取得したコミットは名前のないブランチとして取り込まれ、「FETCH_HEAD」という名前でチェックアウトすることが出来る。
