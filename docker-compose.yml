@@ -1,8 +1,6 @@
 version: '3'
 services:
   perl_container:
-    image: perl:5.26
-    ports: 
-      - 5000:5000
-    volumes:
-      - .:/var/www/html
+    build: .
+    ports:
+    - "5000:5000"
