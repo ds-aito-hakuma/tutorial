@@ -81,59 +81,72 @@
 # 8月10日(火)
 use strict; # 厳しいプログラムのチェック
 use warnings; # 詳しい警告を出力
-# 環境変数　環境変数の値の読み書きが出来る
-#print "このPCのPATHは\n$ENV{'PATH'}\n";
-print "このPCのPATHは\n";
-my @path = split(/:/, $ENV{'PATH'});
-foreach my $i (@path) {
-    print "$i\n";
+# # 環境変数　環境変数の値の読み書きが出来る
+# #print "このPCのPATHは\n$ENV{'PATH'}\n";
+# print "このPCのPATHは\n";
+# my @path = split(/:/, $ENV{'PATH'});
+# foreach my $i (@path) {
+#     print "$i\n";
+# }
+# print "です。\n";
+
+# # コンテキストの判断
+# my $x = 123;
+# my $y = 456;
+# print $x + $y; # ＋は両辺を数値コンテキストで評価する
+# print "\n";
+# print "a" + "b"; # 数値コンテキストで評価するが、"a"と"b"は文字列であるため0であると認識されてしまう
+# print "\n";
+# print $x . $y; # .は両辺を文字列コンテキストで評価する
+# print "\n";
+
+# # 文字列処理関数
+# # 文字列関数 substr
+# my $sub = substr("hello world!", 0,2); # 指定した位置から指定したバイト数の文字列を抽出する
+# print "$sub\n";
+# # 文字列関数 index
+# my $alph = "abcdefghijklmnopqrstuvwxyz";
+# my $ind = index($alph, "i");
+# print "\$alpaの中にiは$ind番目にあります。\n";
+
+# # 条件分岐
+# my ($sec, $min, $hour) = localtime(); # 現在時刻をスカラー変数に代入
+# my ($dakoku_min, $dakoku_hour) = (50, 9);
+# my ($taikin_min, $taikin_hour) = ($dakoku_min, $dakoku_hour + 9);
+# if ( $hour >= $taikin_hour or ( $hour == $taikin_hour and $min >= $taikin_min ) ) {
+#     print "お疲れ様です。\nただいま$hour時$min分$sec秒です。\n退勤打刻は済んでいますか？\n";
+# } elsif ( $hour >= $dakoku_hour + 4 or ( $hour == $dakoku_hour + 4 and $min >= $dakoku_min ) ){
+#     print "お疲れ様です。\nただいま$hour時$min分$sec秒です。\n一時間のお昼休憩は済んでいますか？\n";
+# } else {
+#     print "お疲れ様です。\nただいま$hour時$min分$sec秒です。\n今日も一日頑張りましょう！\n";
+# }
+
+# unless ( $hour == 12 ) {
+#     print "ただいまお昼ではありません。\n";
+# }
+
+# # if修飾子
+# $hour = "0$hour" if ($hour < 10);
+# $min = "0$min" if ($min < 10);
+# $sec = "0$sec" if ($sec < 10);
+# print "ただいま$hour時$min分$sec秒です。\n";
+
+# # 文字列の比較
+# $a = "abc";
+# $b = "abc";
+# if ( $a eq $b ) {
+#     print "\$aと\$bは同じ文字列($a)です\n";
+# }
+
+# 8月11日(水)
+# 配列
+my @score = ( 60, 55, 82 );
+my $sum;
+foreach my $item (@score) {
+    $sum += $item;
 }
-print "です。\n";
-
-# コンテキストの判断
-my $x = 123;
-my $y = 456;
-print $x + $y; # ＋は両辺を数値コンテキストで評価する
-print "\n";
-print "a" + "b"; # 数値コンテキストで評価するが、"a"と"b"は文字列であるため0であると認識されてしまう
-print "\n";
-print $x . $y; # .は両辺を文字列コンテキストで評価する
-print "\n";
-
-# 文字列処理関数
-# 文字列関数 substr
-my $sub = substr("hello world!", 0,2); # 指定した位置から指定したバイト数の文字列を抽出する
-print "$sub\n";
-# 文字列関数 index
-my $alph = "abcdefghijklmnopqrstuvwxyz";
-my $ind = index($alph, "i");
-print "\$alpaの中にiは$ind番目にあります。\n";
-
-# 条件分岐
-my ($sec, $min, $hour) = localtime(); # 現在時刻をスカラー変数に代入
-my ($dakoku_min, $dakoku_hour) = (50, 9);
-my ($taikin_min, $taikin_hour) = ($dakoku_min, $dakoku_hour + 9);
-if ( $hour >= $taikin_hour or ( $hour == $taikin_hour and $min >= $taikin_min ) ) {
-    print "お疲れ様です。\nただいま$hour時$min分$sec秒です。\n退勤打刻は済んでいますか？\n";
-} elsif ( $hour >= $dakoku_hour + 4 or ( $hour == $dakoku_hour + 4 and $min >= $dakoku_min ) ){
-    print "お疲れ様です。\nただいま$hour時$min分$sec秒です。\n一時間のお昼休憩は済んでいますか？\n";
-} else {
-    print "お疲れ様です。\nただいま$hour時$min分$sec秒です。\n今日も一日頑張りましょう！\n";
+print $sum , "\n";
+foreach (@score) {
+    $sum -= $_;
 }
-
-unless ( $hour == 12 ) {
-    print "ただいまお昼ではありません。\n";
-}
-
-# if修飾子
-$hour = "0$hour" if ($hour < 10);
-$min = "0$min" if ($min < 10);
-$sec = "0$sec" if ($sec < 10);
-print "ただいま$hour時$min分$sec秒です。\n";
-
-# 文字列の比較
-$a = "abc";
-$b = "abc";
-if ( $a eq $b ) {
-    print "\$aと\$bは同じ文字列($a)です\n";
-}
+print $sum , "\n";
