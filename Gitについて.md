@@ -132,3 +132,21 @@ $ git tag <tagname>
   - amendオプションを指定してコミットを行うと、同じブランチの直前のコミットに対して内容を追加やコメントの修正をすることが出来る
     - 主に直前のコミット漏れしたファイルをあとから追加したり、直前のコミットメントを修正する際に使用する。
   
+## 8月12日(木)
+### revertを使ってpullの打消し
+- ```Git
+  $ git revert HEAD
+  ```
+- 直前のpullを消去し、ひとつ前の状態に戻すことが出来る。
+### resetを使ってブランチの先頭から二つ分のコミットを削除する
+- ```Git
+  $ git reset --hard HEAD~~
+  ```
+- reset前のコミットはORIG_HEADという名前で参照することが出来る。そのため間違えてresetした際にはORIG_HEADにresetするとreset前の状態に戻すことが出来る。
+### cherry-pickを使って別ブランチのあるコミットをmergeする
+- ```Git
+  $ git cherry-pick <commitID>
+  (conflictを修正)
+  $ git add <ファイル名>
+  $ git commit
+  ```
