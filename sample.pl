@@ -140,13 +140,130 @@ use warnings; # 詳しい警告を出力
 
 # 8月11日(水)
 # 配列
-my @score = ( 60, 55, 82 );
-my $sum;
-foreach my $item (@score) {
-    $sum += $item;
+# my @score = ( 60, 55, 82 );
+# my $sum;
+# foreach my $item (@score) {
+#     $sum += $item;
+# }
+# print $sum , "\n";
+# foreach (@score) {
+#     $sum -= $_;
+# }
+# print $sum , "\n";
+
+# 8月12日（木）
+# 配列とリストに関する関数
+my @score = (40, 11, 80);
+
+# join('区切り文字', 配列やリスト)
+print "今回の得点は、" . join("点と", @score) . "点です。\n";
+
+# split(/パターン/, 文字列)
+my @score_2 = split(/,/, '94,70,85');
+print "@score_2\n";
+
+# 空白をパターンとして使用する際には
+# split(' ', 文字列); で空白区切りを実行できる
+my @data = split(' ', '  green     red        yellow  ');
+print "@data\n";
+
+# push(配列, 連結させる文字列);
+push(@score, @data);
+print "@score\n";
+
+# pop(配列);
+# 配列の最後の要素を取り出す
+my $color = pop(@score);
+print "$color\n";
+
+# shift(配列);
+# 配列の先頭の要素を取り出す
+my $score = shift(@score);
+print "$score点です。\n";
+
+# unshift(配列, 要素);
+# 配列の先頭に要素を追加する
+unshift(@score, '100');
+print "@score\n";
+
+# spliceの使い方
+print "spliceの使い方\n";
+print "\n";
+    # その１
+    # splice(対象配列の, ここから, これだけの長さを削除し, そこにこのリストを挿入);
+    print "その１\n";
+    my @array = ('a', 'b', 'c', 'd', 'e');
+    print "\@array：@array\n";
+    my @xyz = ('x', 'y', 'z');
+    my @removed = splice(@array, 1, 4, @xyz);
+    print "\@array：@array\n";
+    print "\@removed：@removed\n";
+    print "\n";
+
+    # その２
+    # splice(対象配列の, ここから, これだけの長さを削除);
+    print "その２\n";
+    @array = ('a', 'b', 'c', 'd', 'e');
+    print "\@array：@array\n";
+    @removed = splice(@array, 1, 3);
+    print "\@array：@array\n";
+    print "\@removed：@removed\n";
+    print "\n";
+
+    # その３
+    # splice(対象配列の, ここから最後まで削除);
+    print "その３\n";
+    @array = ('a', 'b', 'c', 'd', 'e');
+    print "\@array：@array\n";
+    @removed = splice(@array, 2);
+    print "\@array：@array\n";
+    print "\@removed：@removed\n";
+    print "\n";
+
+    # その４
+    # splice(対象配列を最初から最後まで削除する);
+    print "その４\n";
+    @array = ('a', 'b', 'c', 'd', 'e');
+    print "\@array：@array\n";
+    @removed = splice(@array);
+    print "\@array：@array\n";
+    print "\@removed：@removed\n";
+    print "\n";
+
+# 繰り返し処理
+# foreach my 変数 (リスト) {
+#     処理 ...
+# }
+foreach (@removed) {
+    print; # 省略
+    print "\n";
 }
-print $sum , "\n";
-foreach (@score) {
-    $sum -= $_;
+print "\n";
+あ　　
+# ファイルの各行を表示するプログラム
+print "【ファイルの各行を表示するプログラム】\n";
+open(FILE, 'sample.txt') or die "$!";
+foreach(<FILE>) {
+    print;
 }
-print $sum , "\n";
+print "\n\n";
+
+# ディレクトリの各ファイルの繰り返し
+print "【ディレクトリの各ファイルの繰り返し】\n";
+opendir(DIR, '.') or die "$!";
+foreach (readdir(DIR)) {
+    print;
+    print "\n";
+}
+print "\n";
+
+# whileを使った繰り返し
+# while(条件式) {
+#     処理 ...
+# }
+print "【ファイルの各行を表示するプログラム】\n";
+open(FILE, 'sample.txt') or die "$!";
+while(<FILE>) {
+    print;
+}
+print "\n\n";
