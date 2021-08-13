@@ -5,9 +5,13 @@ WORKDIR /app
 RUN cpanm Carton Amon2 \
     && amon2-setup.pl HelloWorld || : \
     && apt-get update \
-    && apt-get -y install vim
+    && apt-get -y install vim \
+    && apt-get install locales locales-all \
+    && export LANG=en_US.UTF-8
 
 WORKDIR /app/HelloWorld
+
+ADD myfile.txt /app/HelloWorld/tmpl
 
 RUN sed -i "2i requires 'IO::Interface::Simple';" cpanfile \
     && carton install \
