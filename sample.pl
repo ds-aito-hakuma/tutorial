@@ -153,117 +153,187 @@ use warnings; # 詳しい警告を出力
 
 # 8月12日（木）
 # 配列とリストに関する関数
-my @score = (40, 11, 80);
+# my @score = (40, 11, 80);
 
-# join('区切り文字', 配列やリスト)
-print "今回の得点は、" . join("点と", @score) . "点です。\n";
+# # join('区切り文字', 配列やリスト)
+# print "今回の得点は、" . join("点と", @score) . "点です。\n";
 
-# split(/パターン/, 文字列)
-my @score_2 = split(/,/, '94,70,85');
-print "@score_2\n";
+# # split(/パターン/, 文字列)
+# my @score_2 = split(/,/, '94,70,85');
+# print "@score_2\n";
 
-# 空白をパターンとして使用する際には
-# split(' ', 文字列); で空白区切りを実行できる
-my @data = split(' ', '  green     red        yellow  ');
-print "@data\n";
+# # 空白をパターンとして使用する際には
+# # split(' ', 文字列); で空白区切りを実行できる
+# my @data = split(' ', '  green     red        yellow  ');
+# print "@data\n";
 
-# push(配列, 連結させる文字列);
-push(@score, @data);
-print "@score\n";
+# # push(配列, 連結させる文字列);
+# push(@score, @data);
+# print "@score\n";
 
-# pop(配列);
-# 配列の最後の要素を取り出す
-my $color = pop(@score);
-print "$color\n";
+# # pop(配列);
+# # 配列の最後の要素を取り出す
+# my $color = pop(@score);
+# print "$color\n";
 
-# shift(配列);
-# 配列の先頭の要素を取り出す
-my $score = shift(@score);
-print "$score点です。\n";
+# # shift(配列);
+# # 配列の先頭の要素を取り出す
+# my $score = shift(@score);
+# print "$score点です。\n";
 
-# unshift(配列, 要素);
-# 配列の先頭に要素を追加する
-unshift(@score, '100');
-print "@score\n";
+# # unshift(配列, 要素);
+# # 配列の先頭に要素を追加する
+# unshift(@score, '100');
+# print "@score\n";
 
-# spliceの使い方
-print "spliceの使い方\n";
-print "\n";
-    # その１
-    # splice(対象配列の, ここから, これだけの長さを削除し, そこにこのリストを挿入);
-    print "その１\n";
-    my @array = ('a', 'b', 'c', 'd', 'e');
-    print "\@array：@array\n";
-    my @xyz = ('x', 'y', 'z');
-    my @removed = splice(@array, 1, 4, @xyz);
-    print "\@array：@array\n";
-    print "\@removed：@removed\n";
-    print "\n";
+# # spliceの使い方
+# print "spliceの使い方\n";
+# print "\n";
+#     # その１
+#     # splice(対象配列の, ここから, これだけの長さを削除し, そこにこのリストを挿入);
+#     print "その１\n";
+#     my @array = ('a', 'b', 'c', 'd', 'e');
+#     print "\@array：@array\n";
+#     my @xyz = ('x', 'y', 'z');
+#     my @removed = splice(@array, 1, 4, @xyz);
+#     print "\@array：@array\n";
+#     print "\@removed：@removed\n";
+#     print "\n";
 
-    # その２
-    # splice(対象配列の, ここから, これだけの長さを削除);
-    print "その２\n";
-    @array = ('a', 'b', 'c', 'd', 'e');
-    print "\@array：@array\n";
-    @removed = splice(@array, 1, 3);
-    print "\@array：@array\n";
-    print "\@removed：@removed\n";
-    print "\n";
+#     # その２
+#     # splice(対象配列の, ここから, これだけの長さを削除);
+#     print "その２\n";
+#     @array = ('a', 'b', 'c', 'd', 'e');
+#     print "\@array：@array\n";
+#     @removed = splice(@array, 1, 3);
+#     print "\@array：@array\n";
+#     print "\@removed：@removed\n";
+#     print "\n";
 
-    # その３
-    # splice(対象配列の, ここから最後まで削除);
-    print "その３\n";
-    @array = ('a', 'b', 'c', 'd', 'e');
-    print "\@array：@array\n";
-    @removed = splice(@array, 2);
-    print "\@array：@array\n";
-    print "\@removed：@removed\n";
-    print "\n";
+#     # その３
+#     # splice(対象配列の, ここから最後まで削除);
+#     print "その３\n";
+#     @array = ('a', 'b', 'c', 'd', 'e');
+#     print "\@array：@array\n";
+#     @removed = splice(@array, 2);
+#     print "\@array：@array\n";
+#     print "\@removed：@removed\n";
+#     print "\n";
 
-    # その４
-    # splice(対象配列を最初から最後まで削除する);
-    print "その４\n";
-    @array = ('a', 'b', 'c', 'd', 'e');
-    print "\@array：@array\n";
-    @removed = splice(@array);
-    print "\@array：@array\n";
-    print "\@removed：@removed\n";
-    print "\n";
+#     # その４
+#     # splice(対象配列を最初から最後まで削除する);
+#     print "その４\n";
+#     @array = ('a', 'b', 'c', 'd', 'e');
+#     print "\@array：@array\n";
+#     @removed = splice(@array);
+#     print "\@array：@array\n";
+#     print "\@removed：@removed\n";
+#     print "\n";
 
-# 繰り返し処理
-# foreach my 変数 (リスト) {
-#     処理 ...
+# # 繰り返し処理
+# # foreach my 変数 (リスト) {
+# #     処理 ...
+# # }
+# foreach (@removed) {
+#     print; # 省略
+#     print "\n";
 # }
-foreach (@removed) {
-    print; # 省略
+# print "\n";
+# あ　　
+# # ファイルの各行を表示するプログラム
+# print "【ファイルの各行を表示するプログラム】\n";
+# open(FILE, 'sample.txt') or die "$!";
+# foreach(<FILE>) {
+#     print;
+# }
+# print "\n\n";
+
+# # ディレクトリの各ファイルの繰り返し
+# print "【ディレクトリの各ファイルの繰り返し】\n";
+# opendir(DIR, '.') or die "$!";
+# foreach (readdir(DIR)) {
+#     print;
+#     print "\n";
+# }
+# print "\n";
+
+# # whileを使った繰り返し
+# # while(条件式) {
+# #     処理 ...
+# # }
+# print "【ファイルの各行を表示するプログラム】\n";
+# open(FILE, 'sample.txt') or die "$!";
+# while(<FILE>) {
+#     print;
+# }
+# close(FILE);
+# print "\n\n";
+
+# 8月13日（金）
+# last：ループ文を中断させる
+print "【last：ループ文の中断】\n";
+open(FILE, 'sample.txt') or die "$!";
+while(<FILE>) {
+    chomp; # 最後の改行を取り除く
+    if($_ eq 'END') {
+        last;
+    }
+    print;
     print "\n";
 }
+close(FILE);
 print "\n";
-あ　　
-# ファイルの各行を表示するプログラム
-print "【ファイルの各行を表示するプログラム】\n";
-open(FILE, 'sample.txt') or die "$!";
-foreach(<FILE>) {
-    print;
+
+# for文
+print "【for文について】\n";
+my $for =  << "EOD";
+for(初期化; 条件式; 次の一歩;) {
+    処理 ...
+}
+EOD
+print $for;
+for(my $i = 0; $i < 10; $i++) {
+    print $i , ",";
 }
 print "\n\n";
 
-# ディレクトリの各ファイルの繰り返し
-print "【ディレクトリの各ファイルの繰り返し】\n";
-opendir(DIR, '.') or die "$!";
-foreach (readdir(DIR)) {
-    print;
-    print "\n";
+# 【0..9】
+print "【0..9】\n";
+foreach(1..12) {
+    print "$_月 ";
 }
+print "\n\n";
+
+#【do ... until】
+print "【do ... until】\n";
+my $do = 0;
+do {
+    print $do , ",";
+    $do++;
+} until ($do == 5);
+print "\n\n";
+
+# 文字列の繰り返し
+print "【文字列の繰り返し】\n";
+print "文字列 x 繰り返し回数\n";
+my $str = "Programming Lesson!";
+print "-" x length($str) , "\n";
+print $str , "\n";
+print "-" x length($str) , "\n";
 print "\n";
 
-# whileを使った繰り返し
-# while(条件式) {
-#     処理 ...
-# }
-print "【ファイルの各行を表示するプログラム】\n";
-open(FILE, 'sample.txt') or die "$!";
-while(<FILE>) {
-    print;
-}
+# grepによる繰り返し
+print "【grepによる繰り返し】\n";
+print "grep(/パターン/, リスト)\n";
+my @week = ('Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat');
+my @found = grep(/^S/, @week);
+print "@found\n";
+print "\n";
+
+# mapによる繰り返し
+print "【mapによる繰り返し】\n";
+print "map { 各要素を構成する式 } リスト\n";
+my @user = ('aito-hakuma', 'taisei-seno', 'hiroki-takeno');
+my @mail = map { $_ . '@dimage.co.jp' } @user;
+print join("\n", @mail);
 print "\n\n";
