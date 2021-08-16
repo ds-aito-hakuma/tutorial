@@ -79,8 +79,8 @@
 # print ;
 
 # 8月10日(火)
-use strict; # 厳しいプログラムのチェック
-use warnings; # 詳しい警告を出力
+# use strict; # 厳しいプログラムのチェック
+# use warnings; # 詳しい警告を出力
 # # 環境変数　環境変数の値の読み書きが出来る
 # #print "このPCのPATHは\n$ENV{'PATH'}\n";
 # print "このPCのPATHは\n";
@@ -271,69 +271,107 @@ use warnings; # 詳しい警告を出力
 
 # 8月13日（金）
 # last：ループ文を中断させる
-print "【last：ループ文の中断】\n";
-open(FILE, 'sample.txt') or die "$!";
-while(<FILE>) {
-    chomp; # 最後の改行を取り除く
-    if($_ eq 'END') {
-        last;
-    }
-    print;
-    print "\n";
+# print "【last：ループ文の中断】\n";
+# open(FILE, 'sample.txt') or die "$!";
+# while(<FILE>) {
+#     chomp; # 最後の改行を取り除く
+#     if($_ eq 'END') {
+#         last;
+#     }
+#     print;
+#     print "\n";
+# }
+# close(FILE);
+# print "\n";
+
+# # for文
+# print "【for文について】\n";
+# my $for =  << "EOD";
+# for(初期化; 条件式; 次の一歩;) {
+#     処理 ...
+# }
+# EOD
+# print $for;
+# for(my $i = 0; $i < 10; $i++) {
+#     print $i , ",";
+# }
+# print "\n\n";
+
+# # 【0..9】
+# print "【0..9】\n";
+# foreach(1..12) {
+#     print "$_月 ";
+# }
+# print "\n\n";
+
+# #【do ... until】
+# print "【do ... until】\n";
+# my $do = 0;
+# do {
+#     print $do , ",";
+#     $do++;
+# } until ($do == 5);
+# print "\n\n";
+
+# # 文字列の繰り返し
+# print "【文字列の繰り返し】\n";
+# print "文字列 x 繰り返し回数\n";
+# my $str = "Programming Lesson!";
+# print "-" x length($str) , "\n";
+# print $str , "\n";
+# print "-" x length($str) , "\n";
+# print "\n";
+
+# # grepによる繰り返し
+# print "【grepによる繰り返し】\n";
+# print "grep(/パターン/, リスト)\n";
+# my @week = ('Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat');
+# my @found = grep(/^S/, @week);
+# print "@found\n";
+# print "\n";
+
+# # mapによる繰り返し
+# print "【mapによる繰り返し】\n";
+# print "map { 各要素を構成する式 } リスト\n";
+# my @user = ('aito-hakuma', 'taisei-seno', 'hiroki-takeno');
+# my @mail = map { $_ . '@dimage.co.jp' } @user;
+# print join("\n", @mail);
+# print "\n\n";
+
+# 8月16日(月)
+# パッケージについて
+# パッケージ内にて宣言された変数について
+package pkg1;
+$value = "It's getting exciting now !";
+print "$value\n";
+package pkg2;
+print "$value\n";
+print "$pkg1::value\n";
+
+# コンストラクタの作成
+package Class;
+sub new{
+    # 暗黙のうちに引き渡されるクラス名を受け取る
+    my $class = shift;
+    # 無名ハッシュのリファレンスを作成
+    my $self = {};
+    # bless したオブジェクトリファレンスを返す
+    return bless $self, $class;
 }
-close(FILE);
-print "\n";
 
-# for文
-print "【for文について】\n";
-my $for =  << "EOD";
-for(初期化; 条件式; 次の一歩;) {
-    処理 ...
+package Class;
+sub new{
+    my $class = shift;
+    # オブジェクトを作成して返す
+    my $self = {
+        X => 10,
+        Y => 100,
+    };
+    return bless $self, $class;
 }
-EOD
-print $for;
-for(my $i = 0; $i < 10; $i++) {
-    print $i , ",";
+sub method1{
+    my $self = shift;
+    print "$self->{X} : $self->{Y}\n";
 }
-print "\n\n";
 
-# 【0..9】
-print "【0..9】\n";
-foreach(1..12) {
-    print "$_月 ";
-}
-print "\n\n";
-
-#【do ... until】
-print "【do ... until】\n";
-my $do = 0;
-do {
-    print $do , ",";
-    $do++;
-} until ($do == 5);
-print "\n\n";
-
-# 文字列の繰り返し
-print "【文字列の繰り返し】\n";
-print "文字列 x 繰り返し回数\n";
-my $str = "Programming Lesson!";
-print "-" x length($str) , "\n";
-print $str , "\n";
-print "-" x length($str) , "\n";
-print "\n";
-
-# grepによる繰り返し
-print "【grepによる繰り返し】\n";
-print "grep(/パターン/, リスト)\n";
-my @week = ('Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat');
-my @found = grep(/^S/, @week);
-print "@found\n";
-print "\n";
-
-# mapによる繰り返し
-print "【mapによる繰り返し】\n";
-print "map { 各要素を構成する式 } リスト\n";
-my @user = ('aito-hakuma', 'taisei-seno', 'hiroki-takeno');
-my @mail = map { $_ . '@dimage.co.jp' } @user;
-print join("\n", @mail);
-print "\n\n";
+# 次回classの利用方法を学習する
