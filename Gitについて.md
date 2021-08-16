@@ -150,3 +150,20 @@ $ git tag <tagname>
   $ git add <ファイル名>
   $ git commit
   ```
+
+## 8月13日（金）
+### rebase -i でコミットを修正する
+- ```Git
+  $ git rebase -i HEAD~~
+  ```
+
+## 8月16日（月）
+### [rebaseのまとめ](https://qiita.com/KTakata/items/d33185fc0457c08654a5)
+### amendオプション
+- amendオプションを指定してコミットを行うと、同じブランチの直前のコミットに対して内容を追加やコメントの修正をすることができます。
+  - ```Git
+    (ファイルを編集する)
+    $ git add <FileName>
+    $ git commit --amend
+    (直前のコミットを編集してファイルを追加・コミットする)
+    ```
