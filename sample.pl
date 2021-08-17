@@ -341,37 +341,68 @@
 # 8月16日(月)
 # パッケージについて
 # パッケージ内にて宣言された変数について
-package pkg1;
-$value = "It's getting exciting now !";
-print "$value\n";
-package pkg2;
-print "$value\n";
-print "$pkg1::value\n";
+# package pkg1;
+# $value = "It's getting exciting now !";
+# print "$value\n";
+# package pkg2;
+# print "$value\n";
+# print "$pkg1::value\n";
 
-# コンストラクタの作成
-package Class;
-sub new{
-    # 暗黙のうちに引き渡されるクラス名を受け取る
-    my $class = shift;
-    # 無名ハッシュのリファレンスを作成
-    my $self = {};
-    # bless したオブジェクトリファレンスを返す
-    return bless $self, $class;
-}
+# # コンストラクタの作成
+# package Class;
+# sub new{
+#     # 暗黙のうちに引き渡されるクラス名を受け取る
+#     my $class = shift;
+#     # 無名ハッシュのリファレンスを作成
+#     my $self = {};
+#     # bless したオブジェクトリファレンスを返す
+#     return bless $self, $class;
+# }
 
-package Class;
-sub new{
-    my $class = shift;
-    # オブジェクトを作成して返す
-    my $self = {
-        X => 10,
-        Y => 100,
-    };
-    return bless $self, $class;
-}
-sub method1{
-    my $self = shift;
-    print "$self->{X} : $self->{Y}\n";
-}
+# package Class;
+# sub new{
+#     my $class = shift;
+#     # オブジェクトを作成して返す
+#     my $self = {
+#         X => 10,
+#         Y => 100,
+#     };
+#     return bless $self, $class;
+# }
+# sub method1{
+#     my $self = shift;
+#     print "$self->{X} : $self->{Y}\n";
+# }
 
 # 次回classの利用方法を学習する
+
+# 8月17日（火）
+# パッケージの復習
+# 簡単なパッケージ
+# 実行の準備が済んだことをPerlインタプリタに知らせるために、パッケージの最後で真を返す必要がある。
+# そのためreturn 1;もしくは1;を書く必要がある。
+# package pkg1;
+# sub func {
+#     print "OK!\n";
+# }
+# return 1;
+
+# パッケージを利用する
+# require "pkg1.pl"; # ファイル名pkg1.plを読み込む
+# $pkg::value; #pkg1パッケージの$value変数を利用
+# パッケージ名無しで2つのコロンを置くとmainパッケージの略称となる。
+# つまり、$::valueは$main::valueと同じ意味である。
+
+# ローカル変数とパッケージ
+# myで宣言したローカル変数はパッケージに属していない。
+# そのため、my変数をパッケージの変数として宣言することもできない。
+
+use SampleModule;
+sub1();
+# sub2(); # インポートするためには明示文が必要
+use SampleModule qw(sub2);
+sub2();
+
+# クラスを呼び出す
+use SampleClass;
+my $obj = new Class;
